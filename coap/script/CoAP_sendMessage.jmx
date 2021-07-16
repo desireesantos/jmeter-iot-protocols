@@ -19,11 +19,12 @@
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">2</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <net.xmeter.samplers.CoAPPubSampler guiclass="net.xmeter.gui.CoAPPubSamplerUI" testclass="net.xmeter.samplers.CoAPPubSampler" testname="CoAP Test" enabled="true">
@@ -42,12 +43,17 @@
           <stringProp name="coap.message_type">PUT</stringProp>
           <stringProp name="coap.message_id"></stringProp>
           <stringProp name="coap.token"></stringProp>
-          <stringProp name="coap.resource_path">middleware_ttest</stringProp>
+          <stringProp name="coap.resource_path">middleware</stringProp>
           <boolProp name="coap.add_timestamp">false</boolProp>
           <stringProp name="coap.payload_type">Random string with fixed length</stringProp>
-          <stringProp name="coap.payload_type_fixed_length">800</stringProp>
+          <stringProp name="coap.payload_type_fixed_length">20</stringProp>
           <stringProp name="coap.payload_to_sent">Random string with fixed length</stringProp>
         </net.xmeter.samplers.CoAPPubSampler>
+        <hashTree/>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <stringProp name="throughput">${__jexl2(10)}</stringProp>
+          <intProp name="calcMode">0</intProp>
+        </ConstantThroughputTimer>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">true</boolProp>
