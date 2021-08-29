@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -13,47 +13,53 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">10</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <net.xmeter.samplers.CoAPPubSampler guiclass="net.xmeter.gui.CoAPPubSamplerUI" testclass="net.xmeter.samplers.CoAPPubSampler" testname="CoAP Test" enabled="true">
-          <stringProp name="coap.server">192.168.43.73</stringProp>
-          <stringProp name="coap.port">5683</stringProp>
-          <stringProp name="coap.protocol">UDP</stringProp>
-          <boolProp name="coap.dual_ssl_authentication">false</boolProp>
-          <stringProp name="coap.keystore_file_path"></stringProp>
-          <stringProp name="coap.clientcert_file_path"></stringProp>
-          <stringProp name="coap.keystore_password"></stringProp>
-          <stringProp name="coap.clientcert_password"></stringProp>
-          <stringProp name="coap.client_id_prefix">coap_pub_</stringProp>
-          <boolProp name="coap.client_id_suffix">true</boolProp>
-          <stringProp name="coap.user_name"></stringProp>
-          <stringProp name="coap.password"></stringProp>
-          <stringProp name="coap.message_type">PUT</stringProp>
-          <stringProp name="coap.message_id"></stringProp>
-          <stringProp name="coap.token"></stringProp>
-          <stringProp name="coap.resource_path">middleware</stringProp>
-          <boolProp name="coap.add_timestamp">false</boolProp>
-          <stringProp name="coap.payload_type">Random string with fixed length</stringProp>
-          <stringProp name="coap.payload_type_fixed_length">2048</stringProp>
-          <stringProp name="coap.payload_to_sent">Random string with fixed length</stringProp>
-        </net.xmeter.samplers.CoAPPubSampler>
-        <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <stringProp name="throughput">${__jexl2(10)}</stringProp>
-          <intProp name="calcMode">0</intProp>
-        </ConstantThroughputTimer>
-        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">4</stringProp>
+        </LoopController>
+        <hashTree>
+          <net.xmeter.samplers.CoAPPubSampler guiclass="net.xmeter.gui.CoAPPubSamplerUI" testclass="net.xmeter.samplers.CoAPPubSampler" testname="CoAP Test" enabled="true">
+            <stringProp name="coap.server">192.168.1.78</stringProp>
+            <stringProp name="coap.port">5683</stringProp>
+            <stringProp name="coap.protocol">UDP</stringProp>
+            <boolProp name="coap.dual_ssl_authentication">false</boolProp>
+            <stringProp name="coap.keystore_file_path"></stringProp>
+            <stringProp name="coap.clientcert_file_path"></stringProp>
+            <stringProp name="coap.keystore_password"></stringProp>
+            <stringProp name="coap.clientcert_password"></stringProp>
+            <stringProp name="coap.client_id_prefix">coap_pub_</stringProp>
+            <boolProp name="coap.client_id_suffix">false</boolProp>
+            <stringProp name="coap.user_name"></stringProp>
+            <stringProp name="coap.password"></stringProp>
+            <stringProp name="coap.message_type">PUT</stringProp>
+            <stringProp name="coap.message_id"></stringProp>
+            <stringProp name="coap.token"></stringProp>
+            <stringProp name="coap.resource_path">middleware</stringProp>
+            <boolProp name="coap.add_timestamp">false</boolProp>
+            <stringProp name="coap.payload_type">Random string with fixed length</stringProp>
+            <stringProp name="coap.payload_type_fixed_length">2048</stringProp>
+            <stringProp name="coap.payload_to_sent">Random string with fixed length</stringProp>
+          </net.xmeter.samplers.CoAPPubSampler>
+          <hashTree/>
+          <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+            <stringProp name="throughput">${__jexl2(50)}</stringProp>
+            <intProp name="calcMode">2</intProp>
+          </ConstantThroughputTimer>
+          <hashTree/>
+        </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">true</boolProp>
           <objProp>
