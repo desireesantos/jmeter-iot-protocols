@@ -13,7 +13,8 @@ First you need to generate the plugin file(.jar)
   ```javascript
       cd coap-jmeter & mvn install
   ```
-- After build successfully the coap plugin using maven. Install coap plugin manually:
+- After build successfully the coap plugin using maven. 
+[Install coap plugin manually](https://jmeter-plugins.org/wiki/PluginsManager/):
   - copy the coap-xmeter-jar-with-dependencies.jar(it's in target folder) to $JMETER/lib/ext
 
 [You can build a new one or use the plugin(.jar) in coap/pluginReadyToImport]
