@@ -1,6 +1,8 @@
 # CoAP, MQTT JMeter Script
 
-JMeter CoAP Plugin
+## JMeter
+Install [Jmeter](https://jmeter.apache.org/download_jmeter.cgi) downloading the file in order to load test functional behavior and measure performance.
+## JMeter CoAP Plugin
 
 - https://github.com/xmeter-net/coap-jmeter
 
@@ -19,16 +21,14 @@ First you need to generate the plugin file(.jar)
 
 [You can build a new one or use the plugin(.jar) in coap/pluginReadyToImport]
 
-JMeter MQTT Plugin
+## JMeter MQTT Plugin
 
-- https://github.com/xmeter-net/mqtt-jmeter
+- MQTT Plugin: https://github.com/xmeter-net/mqtt-jmeter
 
 - Install MQTT plugin
   - The MQTT plugin is ready to use.
-    You just need to follow the plugin instruction, adding .jar manually OR by Jmeter GUI plugin
+    You just need to follow the plugin instructions, adding .jar manually OR by Jmeter GUI plugin
 
-[You can download or use the plugin(.jar) in mqtt/pluginReadyToImport]
+_You can download or use the plugin(.jar) in mqtt pluginReadyToImport folder in this repository_
 
-Script/Demo reference:
-
-- https://youtu.be/OYRh_gciB-o
+MQTT Script/Demo reference: https://youtu.be/OYRh_gciB-o
